@@ -1,16 +1,28 @@
+'''
+Created on April 10, 2018
+
+@author: DongSon
+
+This is a simple calculator program with some basic function:
++ , - , * , / , x^y , n! , serie sum
+'''
+
 def plus():
+    # Calculate value of a + b
     a = int(input('Input number a: '))
     b = int(input('Input number b: '))
     return a + b
 
 
 def minus():
+    # Calculate value of a - b
     a = int(input('Input number a: '))
     b = int(input('Input number b: '))
     return a - b
 
 
 def divide():
+    # Calculate value of a / b
     a = int(input('Input number a: '))
     b = int(input('Input number b: '))
     if b == 0:
@@ -19,18 +31,21 @@ def divide():
 
 
 def product():
+    # Calculate value of a * b
     a = int(input('Input number a: '))
     b = int(input('Input number b: '))
     return a * b
 
 
 def power():
+    # Calculate value of x^y
     x = int(input('Input number x: '))
     y = int(input('Input number y: '))
     return x ** y
 
 
 def factorial():
+    # Calculate value of n!
     n = int(input('Input number n: '))
     fac = 1
     count = 1
@@ -41,6 +56,7 @@ def factorial():
 
 
 def test():
+    # Calculate value of 1 + 1/2 + 1/3 + ... + 1/n
     n = int(input('Input number n: '))
     total = 1
     for i in range(2, n + 1):
@@ -50,6 +66,8 @@ def test():
 
 
 def myFunction(option):
+    # Switch equivalent in python
+    # Equivalent switch/case in C/C++ code
     switch={
         1: plus,
         2: minus,
