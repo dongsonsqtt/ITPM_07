@@ -74,7 +74,7 @@ while True:
     print("4. Calculate a / b")
     print("5. Calculate x ^ y")
     print("6. Factorial of N")
-    print("7. Calculate 1 + 1/2 + 1/3 + ... + 1/n")
+    print("7. Calculate 1 + 1/2 + 1/3 + .... + 1/n")
     print("0. Exit")
     option = int(input('Please choose a function or press 0 to exit: '))
     myFunction(option)
