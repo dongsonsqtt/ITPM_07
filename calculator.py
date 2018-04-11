@@ -1,10 +1,10 @@
 '''
-Created on April 10, 2018
-
-@author: DongSon
-
-This is a simple calculator program with some basic function:
-+ , - , * , / , x^y , n! , serie sum
+ * @author DongSon
+ * @email dongsonsqtt@mail.com
+ * @create date 2018-04-11 
+ * @modify date 2018-04-11 
+ * @desc [This is a simple calculator program with some basic function:
++ , - , * , / , x^y , n! , serie sum]
 '''
 
 def plus():
