@@ -1,3 +1,10 @@
+'''
+ * @author DongSon
+ * @email dongsonsqtt@mail.com
+ * @create date 2018-04-11 
+ * @modify date 2018-04-11 
+ * @desc test import
+'''
 from BubbleSort import BbSort
 
 a = []
