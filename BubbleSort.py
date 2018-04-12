@@ -19,8 +19,3 @@ def BbSort(list):
         if k == 0:
             break
 
-'''
-a = [9, 2, 5, 4, 7]
-BbSort(a)
-print(a)
-'''

@@ -4,9 +4,9 @@
  * @create date 2018-04-10 
  * @modify date 2018-04-11
  * @desc [This is a simple calculator program with some basic function:
-+ , - , * , / , x^y , n! , serie sum]
++ , - , * , / , x^y , 2^n , n! , serie sum]
 '''
-
+import sys
 def plus():
     # Calculate value of a + b
     a = int(input('Input number a: '))
@@ -44,6 +44,12 @@ def power():
     return x ** y
 
 
+def power2():
+    # Calculate value of 2^n
+    n = int(input('Input number n: '))
+    return 2 ** n
+
+
 def factorial():
     # Calculate value of n!
     n = int(input('Input number n: '))
@@ -58,6 +64,8 @@ def factorial():
 def test():
     # Calculate value of 1 + 1/2 + 1/3 + ... + 1/n
     n = int(input('Input number n: '))
+    if n == 0:
+        return print("Input value > 0")
     total = 1
     for i in range(2, n + 1):
         a = float(1 / i)
@@ -76,13 +84,14 @@ def myFunction(option):
         5: power,
         6: factorial,
         7: test,
+        8: power2,
         0: exit
     }
     # Get the function from switch dictionary
     func = switch.get(option, lambda: "Please choose a valid function\n")
     # Execute the function
     print(f"Result: {func()}\n")
-
+    
 
 while True:
     print("***********************************************************")
@@ -93,10 +102,24 @@ while True:
     print("5. Calculate x ^ y")
     print("6. Factorial of N")
     print("7. Calculate 1 + 1/2 + 1/3 + .... + 1/n")
+    print("8. Calculate 2 ^ n")
     print("0. Exit")
     try:
         option = int(input('Please choose a function or press 0 to exit: '))
-        myFunction(option)
     except:
         print('Please input a valid number')
+        continue
+    if option not in [0,1,2,3,4,5,6,7,8]:
+        print('Plase choose a valid function!\n')
+        continue
+    myFunction(option)
+'''
+    try:
+        option = int(input('Please choose a function or press 0 to exit: '))
+       # if option not in [0,1,2,3,4,5,6,7,8]:
+           # print('Plase choose a valid function!\n')
+            #continue
+        myFunction(option)
+    except:
+        print('Please input a valid number')'''
     
