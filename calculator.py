@@ -53,6 +53,9 @@ def power2():
 def factorial():
     # Calculate value of n!
     n = int(input('Input number n: '))
+    if n < 0:
+        print('The number must > 0')
+        return 
     fac = 1
     count = 1
     while count <= n:
@@ -66,6 +69,7 @@ def test():
     n = int(input('Input number n: '))
     if n == 0:
         return print("Input value > 0")
+    n = n if n > 0 else -n 
     total = 1
     for i in range(2, n + 1):
         a = float(1 / i)
@@ -112,7 +116,10 @@ while True:
     if option not in [0,1,2,3,4,5,6,7,8]:
         print('Plase choose a valid function!\n')
         continue
-    myFunction(option)
+    try:
+        myFunction(option)
+    except ValueError:
+        print('Invalid input')
 '''
     try:
         option = int(input('Please choose a function or press 0 to exit: '))
