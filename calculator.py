@@ -111,7 +111,7 @@ while True:
     try:
         option = int(input('Please choose a function or press 0 to exit: '))
     except:
-        print('Please input a valid number')
+        print('Please input a valid number\n')
         continue
     if option not in [0,1,2,3,4,5,6,7,8]:
         print('Plase choose a valid function!\n')
@@ -119,7 +119,7 @@ while True:
     try:
         myFunction(option)
     except ValueError:
-        print('Invalid input')
+        print('Invalid input\n')
 '''
     try:
         option = int(input('Please choose a function or press 0 to exit: '))
