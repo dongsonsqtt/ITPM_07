@@ -67,9 +67,9 @@ def factorial():
 def test():
     # Calculate value of 1 + 1/2 + 1/3 + ... + 1/n
     n = int(input('Input number n: '))
-    if n == 0:
+    if n <= 0:
         return print("Input value > 0")
-    n = n if n > 0 else -n 
+    #n = n if n > 0 else -n 
     total = 1
     for i in range(2, n + 1):
         a = float(1 / i)
