@@ -6,7 +6,7 @@
     P: 21
     Q: 14
 '''
-import war_and_peace
+
 # Constant value here:
 x = 0.3223729597231245
 y = 0.11872307867599774
