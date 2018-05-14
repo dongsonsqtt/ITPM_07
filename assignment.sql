@@ -44,12 +44,9 @@ SELECT pt.P_NAME
 FROM patient as pt
 WHERE pt.D_ID = (SELECT DOC_ID FROM doctors_detail WHERE DOC_NAME = 'Thomas');
 
-#OR
-
 SELECT pt.P_NAME
 FROM patient pt,doctors_detail dd
 WHERE pt.D_ID = dd.DOC_ID AND dd.DOC_NAME = 'Amaira';
-
 #Q.10 Find the roomno, name of the patient and corresponding doctors name from which they have taken treatment.
 SELECT pt.ROOM_NO, pt.P_NAME, dd.DOC_NAME
 FROM patient as pt, doctors_detail as dd
@@ -60,23 +57,17 @@ SELECT pt.*
 FROM patient as pt
 WHERE DOA = '2017-01-20' AND D_ID in (SELECT DOC_ID FROM doctors_detail where SPECS = 'Dentist');
 
-#OR
-
 SELECT pt.*
 FROM patient pt, doctors_detail dd
 WHERE pt.DOA = '2017-01-20' AND pt.D_ID = dd.DOC_ID AND dd.SPECS = 'Dentist';
-
 #Q.12 Find the patient name and room number who has taken appointment of Skin Specialist.
 SELECT pt.P_NAME,pt.ROOM_NO
 FROM patient as pt
 WHERE D_ID in (SELECT DOC_ID FROM doctors_detail where SPECS = 'Skin Specialist');
 
-#OR
-
 SELECT pt.P_NAME,pt.ROOM_NO
 FROM patient pt, doctors_detail dd
 WHERE pt.D_ID = dd.DOC_ID AND dd.SPECS = 'Skin Specialist';
-
 #Q.13 Find the distinct specialization of doctors available in hospital.
 SELECT DISTINCT SPECS
 FROM doctors_detail;
@@ -86,8 +77,6 @@ SELECT *
 FROM medicine
 WHERE P_ID IN (SELECT P_ID FROM patient WHERE P_NAME = 'John');
 
-#OR
-
 SELECT md.*
 FROM medicine md,patient pt
 WHERE md.P_ID = pt.P_ID AND pt.P_NAME = 'John';
@@ -96,8 +85,6 @@ WHERE md.P_ID = pt.P_ID AND pt.P_NAME = 'John';
 SELECT *
 FROM patient
 WHERE P_ID IN (SELECT P_ID FROM medicine WHERE MEDICINE = 'LUCTOCIN-25MG') and D_ID = (SELECT DOC_ID FROM doctors_detail WHERE DOC_NAME = 'Asmi khurana');
-
-#OR
 
 SELECT pt.*
 FROM patient pt, medicine md,doctors_detail dd
@@ -112,8 +99,6 @@ SELECT dd.*
 FROM doctors_detail as dd,  patient
 WHERE patient.D_ID = DOC_ID AND patient.P_ID IN (SELECT P_ID FROM medicine WHERE MEDICINE = 'GLOCIN-GEL');
 
-#OR
-
 SELECT dd.*
 FROM doctors_detail dd, patient pt, medicine md
 WHERE pt.D_ID = dd.DOC_ID AND pt.P_ID = md.P_ID AND md.MEDICINE = 'GLOCIN-GEL';
@@ -122,8 +107,6 @@ WHERE pt.D_ID = dd.DOC_ID AND pt.P_ID = md.P_ID AND md.MEDICINE = 'GLOCIN-GEL';
 SELECT *
 FROM patient
 WHERE P_ID = (SELECT P_ID FROM medicine WHERE PRICE = (SELECT MAX(PRICE) FROM medicine));
-
-#OR
 
 SELECT pt.*
 FROM patient pt,medicine md
@@ -176,8 +159,9 @@ FROM accounts ac, (SELECT pt.P_ID, pt.P_NAME, COALESCE( medicine.PRICE * medicin
 WHERE ac.P_ID = temp.P_ID;
 
 #Q.27 Find the average payment of doctors.
-SELECT AVG(DOC_FEE) as AVERAGE_PAYMENT
-FROM accounts;
+SELECT SUM(ac.DOC_FEE)/temp.NO_DOCS as AVERAGE_PAYMENT
+FROM accounts ac, (SELECT COUNT(dd.DOC_ID) as NO_DOCS
+					FROM doctors_detail dd) temp;
 
 #Q.28 Find the detail of patient who is admitted for more than 5 days in a hospital.
 SELECT pt.*
@@ -230,7 +214,6 @@ WHERE pt.P_ID = ac.P_ID AND ac.DOC_FEE = (SELECT MIN(DOC_FEE) FROM accounts);
 SELECT pt.P_NAME, dd.DOC_NAME, md.PRICE, md.QTY
 FROM patient pt ,doctors_detail dd, medicine md
 WHERE md.MEDICINE = 'SOLBERIS-500' AND md.P_ID = pt.P_ID AND pt.D_ID = dd.DOC_ID;
-
 #Q.35 Find the patient name, doctors name, specialization, doctors fee whos has taken medicine Kalpol-250.
 SELECT pt.P_NAME,dd.DOC_NAME,dd.SPECS, ac.DOC_FEE
 FROM patient pt,medicine md, doctors_detail dd, accounts ac
